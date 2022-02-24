@@ -28,6 +28,7 @@ public class Player extends BorderPane {
 		setCenter(mpane);
 		setBottom(mediaBar);
 		player.play();
+		
 	}
 
 }

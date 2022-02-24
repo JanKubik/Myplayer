@@ -34,6 +34,7 @@ public class MediaBar extends HBox {
 		
 		vol.valueProperty().addListener((o) ->{
 			player.setVolume(vol.getValue()/100);
+			
 		});
 		
 	}
