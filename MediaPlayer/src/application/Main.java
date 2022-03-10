@@ -46,7 +46,11 @@ public class Main extends Application {
 				
 				try {
 					File mediaFile = mediaChooser.showOpenDialog(primaryStage);
+					if(mediaPlayer != null) {
+						mediaPlayer.player.dispose();
+						}
 					mediaPlayer = new Player(mediaFile.toURI().toURL().toExternalForm());
+					mediaPlayer.view.setFitWidth(scene.getWidth());
 				} catch (MalformedURLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -55,6 +59,11 @@ public class Main extends Application {
 			});
 			
 			root.setTop(menu);
+			
+			primaryStage.widthProperty().addListener((obs,olsVal,newVal) ->{
+				if(mediaPlayer != null)
+				mediaPlayer.view.setFitWidth(scene.getWidth());
+			});
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
